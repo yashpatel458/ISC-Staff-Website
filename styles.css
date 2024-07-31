@@ -3,7 +3,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     margin: 0;
     background-color: #f0f0f0;
     font-family: Arial, sans-serif;
@@ -15,7 +14,7 @@ body {
     color: #fff;
     text-align: center;
     padding: 20px 0;
-    margin-bottom: 20px; /* Space between banner and images */
+    margin-bottom: 20px;
 }
 
 .header-banner h1 {
@@ -26,38 +25,58 @@ body {
 .team-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    max-width: 1200px; /* Set a max-width to keep the container within bounds */
-    width: 90%;
-    gap: 30px; /* Space between team members */
+    justify-content: center;
+    gap: 30px;
+    padding: 0 15px;
 }
 
 .team-member {
     text-align: center;
-    flex: 1 1 calc(33.333% - 30px); /* Adjust width for 3 items per row with gap */
     box-sizing: border-box;
-    max-width: 300px; /* Ensure each item fits within the container */
+    flex: 1 1 calc(100% - 30px); /* Default to full width */
+    max-width: 100%;
+    margin-bottom: 30px;
+}
+
+@media (min-width: 576px) {
+    .team-member {
+        flex: 1 1 calc(50% - 30px); /* Two columns on small screens */
+    }
+}
+
+@media (min-width: 768px) {
+    .team-member {
+        flex: 1 1 calc(50% - 30px); /* Two columns on small screens */
+    }
+}
+
+@media (min-width: 992px) {
+    .team-member {
+        flex: 1 1 calc(33.333% - 30px); /* Three columns on medium screens */
+    }
 }
 
 .image-flip {
     width: 100%;
-    height: 300px; /* Adjust height as needed */
+    height: auto;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.8s cubic-bezier(0.36, 0.07, 0.61, 0.88); /* Smooth transition */
-    perspective: 1000px; /* Add perspective to enhance the 3D effect */
+    transition: transform 0.8s cubic-bezier(0.36, 0.07, 0.61, 0.88);
+    perspective: 1000px;
 }
 
 .image-inner {
-    position: absolute;
+    position: relative;
     width: 100%;
-    height: 100%;
+    padding-top: 100%; /* Maintain aspect ratio */
     transform-style: preserve-3d;
-    transition: transform 0.8s cubic-bezier(0.36, 0.07, 0.61, 0.88); /* Smooth transition */
+    transition: transform 0.8s cubic-bezier(0.36, 0.07, 0.61, 0.88);
 }
 
 .image-front, .image-back {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
@@ -82,21 +101,4 @@ body {
 h3, p {
     margin: 0;
     color: #333;
-}
-
-/* Media query for mobile view */
-@media (max-width: 768px) {
-    .team-container {
-        justify-content: center; /* Center items for smaller screens */
-    }
-
-    .team-member {
-        flex: 1 1 100%; /* Make each item full width */
-        max-width: none; /* Remove max-width restriction */
-        margin-bottom: 20px; /* Add space between rows */
-    }
-
-    .image-flip {
-        height: 300px; /* Adjust height for mobile view */
-    }
 }
