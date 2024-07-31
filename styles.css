@@ -1,3 +1,5 @@
+/* Existing styles */
+
 body {
     display: flex;
     flex-direction: column;
@@ -6,20 +8,43 @@ body {
     margin: 0;
     background-color: #f0f0f0;
     font-family: Arial, sans-serif;
+    overflow-x: hidden; /* Hide horizontal overflow */
+}
+
+html {
+    overflow-x: hidden; /* Hide horizontal overflow */
+}
+
+.container-fluid {
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .header-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-    margin-bottom: 20px;
+    background-color: rgba(8,85,150,255);
+    padding: 0 15px; /* Add some horizontal padding */
+    margin-bottom: 30px;
+    box-sizing: border-box; /* Ensure padding is included in width */
 }
 
-.header-banner h1 {
+.header-banner p {
     margin: 0;
-    font-size: 2em;
+    font-size: 2.5em;
+    text-align: center;
+    flex: 1;
+    font-weight: 800 !important;
+    color: rgba(252,206,8,255);
+}
+
+.isc-logo, .uwindsor-logo {
+    height: 50px; /* Adjust height as needed */
+    width: auto; /* Maintain aspect ratio */
+    padding: 0 10px; /* Add some horizontal padding */
 }
 
 .team-container {
@@ -27,7 +52,8 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 30px;
-    padding: 0 15px;
+    padding: 0 20px; /* Adjust padding */
+    box-sizing: border-box; /* Ensure padding is included in width */
 }
 
 .team-member {
@@ -46,13 +72,13 @@ body {
 
 @media (min-width: 768px) {
     .team-member {
-        flex: 1 1 calc(50% - 30px); /* Two columns on small screens */
+        flex: 1 1 calc(50% - 30px); /* Two columns on medium screens */
     }
 }
 
 @media (min-width: 992px) {
     .team-member {
-        flex: 1 1 calc(33.333% - 30px); /* Three columns on medium screens */
+        flex: 1 1 calc(33.333% - 30px); /* Three columns on large screens */
     }
 }
 
@@ -101,4 +127,17 @@ body {
 h3, p {
     margin: 0;
     color: #333;
+}
+
+/* Mobile view adjustments */
+@media (max-width: 575.98px) {
+    .isc-logo, .uwindsor-logo {
+        display: none; /* Hide logos on mobile view */
+    }
+    .container-fluid {
+        padding: 0; /* Remove extra padding */
+    }
+    .header-banner {
+        padding: 0 10px; /* Adjust padding for mobile view */
+    }
 }
